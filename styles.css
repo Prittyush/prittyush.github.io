@@ -1,39 +1,51 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    text-align: center;
-    overflow: hidden;
+    background: linear-gradient(135deg, #ff6b81, #ff8fab);
     color: white;
+    overflow-x: hidden;
 }
 
-.container {
-    padding-top: 100px;
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 40px;
 }
 
-h1 {
-    font-size: 42px;
-    animation: fadeIn 2s ease;
+.hero h1 {
+    font-size: 48px;
+    margin: 0;
 }
 
-.subtitle {
-    font-size: 18px;
-    margin-bottom: 30px;
+.tagline {
     opacity: 0.9;
+    margin-top: 10px;
 }
 
-.buttons {
-    margin-top: 30px;
-}
-
-button {
+/* LETTER */
+.letter {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
     font-size: 18px;
-    padding: 12px 25px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* QUESTION */
+.question {
+    text-align: center;
+    padding: 40px 20px 80px;
+}
+
+.buttons button {
+    font-size: 18px;
+    padding: 12px 28px;
     margin: 10px;
-    border: none;
     border-radius: 30px;
+    border: none;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 #yes-btn {
@@ -50,6 +62,56 @@ button:hover {
     transform: scale(1.1);
 }
 
+/* GAME */
+
+.game {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-box {
+    background: white;
+    color: #ff4d6d;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 400px;
+}
+
+#game-area {
+    height: 250px;
+    border: 2px dashed #ff4d6d;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: 28px;
+    cursor: pointer;
+    animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+    from { top: -10%; }
+    to { top: 100%; }
+}
+
+.taunt {
+    height: 20px;
+    font-weight: bold;
+    color: #ff6b81;
+}
+
 /* POPUP */
 
 .popup {
@@ -58,25 +120,20 @@ button:hover {
     background: white;
     color: #ff4d6d;
     padding: 30px;
-    width: 80%;
-    max-width: 600px;
+    width: 500px;
+    max-width: 90%;
     border-radius: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    z-index: 1000;
-    animation: zoomIn 0.5s ease;
-}
-
-.gallery {
-    margin-top: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
 .gallery img {
     width: 30%;
-    border-radius: 15px;
     margin: 5px;
+    border-radius: 12px;
     transition: 0.3s;
 }
 
@@ -87,76 +144,4 @@ button:hover {
 .final-line {
     margin-top: 20px;
     font-weight: bold;
-}
-
-/* Floating Hearts */
-
-.hearts::before,
-.hearts::after {
-    content: "❤️";
-    position: absolute;
-    font-size: 20px;
-    animation: float 6s infinite;
-}
-
-.hearts::after {
-    left: 80%;
-    animation-delay: 3s;
-}
-
-@keyframes float {
-    0% { top: 100%; opacity: 0; }
-    50% { opacity: 1; }
-    100% { top: -10%; opacity: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes zoomIn {
-    from { transform: translate(-50%, -50%) scale(0.5); }
-    to { transform: translate(-50%, -50%) scale(1); }
-}
-
-/* GAME */
-
-.game {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.hidden {
-    display: none;
-}
-
-#game-area {
-    position: relative;
-    width: 80%;
-    height: 60%;
-    border: 2px dashed white;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.heart {
-    position: absolute;
-    font-size: 30px;
-    cursor: pointer;
-    animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-    from { top: -10%; }
-    to { top: 100%; }
 }
