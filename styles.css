@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(-45deg, #ff6b81, #ff8fab, #ff4d6d, #ff758f);
     background-size: 400% 400%;
-    animation: gradientFlow 10s ease infinite;
+    animation: gradientFlow 18s ease infinite; /* Slower */
     color: white;
     text-align: center;
     overflow-x: hidden;
@@ -20,7 +20,7 @@ body {
 }
 
 .highlight {
-    animation: glowPulse 2s infinite alternate;
+    animation: glowPulse 3s infinite alternate;
 }
 
 @keyframes glowPulse {
@@ -29,13 +29,11 @@ body {
 }
 
 button {
-    padding: 12px 30px;
-    font-size: 16px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 30px;
-    background: white;
-    color: #ff4d6d;
+    border-radius: 25px;
     cursor: pointer;
+    font-size: 16px;
     margin: 10px;
     transition: 0.3s;
 }
@@ -48,31 +46,18 @@ button:hover {
     display: none;
 }
 
-/* Letter */
-.letter {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 20px;
-}
-
 /* Gallery */
 .gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     padding: 40px;
 }
 
-.images img {
-    width: 250px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin: 10px;
-    transition: 0.3s;
-}
-
-.images img:hover {
-    transform: scale(1.05);
+.gallery img {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 /* Sparkles */
@@ -82,15 +67,48 @@ button:hover {
     width: 200%;
     height: 200%;
     background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: sparkleMove 15s linear infinite;
-    opacity: 0.15;
+    background-size: 50px 50px;
+    animation: sparkleMove 25s linear infinite;
+    opacity: 0.12;
 }
 
 @keyframes sparkleMove {
     from { transform: translateY(0); }
-    to { transform: translateY(-200px); }
+    to { transform: translateY(-300px); }
 }
+
+/* Floating hearts */
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 0.8; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Game */
+.game-area {
+    position: relative;
+    width: 90%;
+    height: 400px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Proposal */
+.proposal {
+    padding: 60px 20px;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
 @keyframes floatUp {
     from { transform: translateY(0); opacity: 0.8; }
     to { transform: translateY(-110vh); opacity: 0; }
