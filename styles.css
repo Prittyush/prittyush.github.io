@@ -1,147 +1,124 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff6b81, #ff8fab);
+    background: linear-gradient(-45deg, #ff6b81, #ff8fab, #ff4d6d, #ff758f);
+    background-size: 400% 400%;
+    animation: gradientFlow 10s ease infinite;
     color: white;
     overflow-x: hidden;
+    text-align: center;
 }
 
-/* HERO */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .hero {
-    text-align: center;
-    padding: 80px 20px 40px;
+    padding: 100px 20px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin: 0;
+    font-size: 50px;
+    animation: heartbeat 3s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    5% { transform: scale(1.05); }
+    10% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.highlight {
+    text-shadow: 0 0 10px rgba(255,255,255,0.8),
+                 0 0 20px rgba(255,255,255,0.6);
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 5px rgba(255,255,255,0.6); }
+    to { text-shadow: 0 0 25px rgba(255,255,255,1); }
 }
 
 .tagline {
-    opacity: 0.9;
-    margin-top: 10px;
-}
-
-/* LETTER */
-.letter {
-    max-width: 700px;
-    margin: auto;
-    text-align: center;
     font-size: 18px;
-    padding: 20px;
-    line-height: 1.6;
+    margin: 15px 0 30px;
 }
 
-/* QUESTION */
-.question {
-    text-align: center;
-    padding: 40px 20px 80px;
-}
-
-.buttons button {
-    font-size: 18px;
-    padding: 12px 28px;
-    margin: 10px;
-    border-radius: 30px;
+button {
+    padding: 12px 30px;
+    font-size: 16px;
     border: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#yes-btn {
+    border-radius: 30px;
     background: white;
     color: #ff4d6d;
-}
-
-#no-btn {
-    background: #ff4d6d;
-    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
     transform: scale(1.1);
 }
 
-/* GAME */
+.letter {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    font-size: 18px;
+    line-height: 1.8;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: fadeUp 1.5s ease;
+}
 
-.game {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hidden {
     display: none;
 }
 
-.game-box {
-    background: white;
-    color: #ff4d6d;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    width: 400px;
-}
-
-#game-area {
-    height: 250px;
-    border: 2px dashed #ff4d6d;
-    margin-top: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.heart {
-    position: absolute;
-    font-size: 28px;
-    cursor: pointer;
-    animation: fall 2s linear forwards;
-}
-
-@keyframes fall {
-    from { top: -10%; }
-    to { top: 100%; }
-}
-
-.taunt {
-    height: 20px;
-    font-weight: bold;
-    color: #ff6b81;
-}
-
-/* POPUP */
-
-.popup {
-    display: none;
+/* Sparkles */
+.sparkles::before {
+    content: "";
     position: fixed;
-    background: white;
-    color: #ff4d6d;
-    padding: 30px;
-    width: 500px;
-    max-width: 90%;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: sparkleMove 15s linear infinite;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+@keyframes sparkleMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* Floating hearts */
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 0.8; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Game */
+.game {
+    padding: 50px 20px;
+}
+
+.game-area {
+    position: relative;
+    width: 90%;
+    height: 400px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.1);
     border-radius: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    text-align: center;
-}
-
-.gallery img {
-    width: 30%;
-    margin: 5px;
-    border-radius: 12px;
-    transition: 0.3s;
-}
-
-.gallery img:hover {
-    transform: scale(1.1);
-}
-
-.final-line {
-    margin-top: 20px;
-    font-weight: bold;
+    overflow: hidden;
 }
