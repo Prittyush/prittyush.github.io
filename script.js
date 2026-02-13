@@ -116,41 +116,28 @@ function showPopup() {
     popup.style.display = "block";
     typeWriter();
 }
+
 /* MINI KISS GAME */
-document.addEventListener("DOMContentLoaded", function () {
 
-    const grid = document.getElementById("kiss-grid");
-    const message = document.getElementById("kiss-message");
+const grid = document.getElementById("kiss-grid");
+const kissMessage = document.getElementById("kiss-message");
 
-    if (!grid) return; // prevents breaking if section missing
+const totalBoxes = 9;
+const winningIndex = Math.floor(Math.random() * totalBoxes);
 
-    const totalBoxes = 9;
-    const winningIndex = Math.floor(Math.random() * totalBoxes);
+for (let i = 0; i < totalBoxes; i++) {
+    const box = document.createElement("div");
+    box.classList.add("kiss-box");
+    box.innerHTML = "❓";
 
-    for (let i = 0; i < totalBoxes; i++) {
-
-        const box = document.createElement("div");
-        box.classList.add("kiss-box");
-        box.textContent = "❓";
-
-        box.addEventListener("click", function () {
-
-            if (box.textContent !== "❓") return;
-
-            if (i === winningIndex) {
-                box.textContent = "💋";
-                message.textContent = "You found it! Okay fine… You have 3 no-questions-asked Vaggu Bhai Eating or Massage sessions tickets 😌❤️";
-            } else {
-                box.textContent = "🙈";
-            }
-
-        });
-
-        grid.appendChild(box);
-    }
-
-});
-
+    box.addEventListener("click", () => {
+        if (i === winningIndex) {
+            box.innerHTML = "💋";
+            kissMessage.textContent = "You found it! Okay fine… You have 3 no-questions-asked Vaggu Bhai Eating or Massage sessions tickets 😌❤️";
+        } else {
+            box.innerHTML = "🙈";
+        }
+    });
 
     grid.appendChild(box);
 }
