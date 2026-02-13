@@ -1,119 +1,65 @@
+const startBtn = document.getElementById("startBtn");
+const letter = document.getElementById("letter");
+const game = document.getElementById("game");
+const gameArea = document.getElementById("gameArea");
+const scoreDisplay = document.getElementById("score");
 const music = document.getElementById("bg-music");
 
-document.addEventListener("click", function() {
-    music.play().catch(() => {});
-}, { once: true });
-
-const noButton = document.getElementById("no-btn");
-const yesButton = document.getElementById("yes-btn");
-const popup = document.getElementById("popup");
-const closeBtn = document.getElementById("close-btn");
-const typingText = document.getElementById("typing-text");
-
-const game = document.getElementById("game");
-const gameArea = document.getElementById("game-area");
-const scoreDisplay = document.getElementById("score");
-const taunt = document.getElementById("taunt");
-
 let score = 0;
-let misses = 0;
 
-const taunts = [
-    "Aree bhai focus crow thoda😭",
-    "Clash Royale player bolte apne apko",
-    "That heart dodged you 😏",
-    "Even I wasn’t this hard to catch 😌",
-    "Skill issue detected 💀"
-];
-
-const message = `
-Hey Love
-
-From Jan 14, 2024, till today,
-these 2 years have been the part of my life where I have felt the most loved and cared for because of you! 
-
-I love you.
-I am proud of you. 
-I just want to hold you. 
-I choose you.
-
-Not just today.
-Not just this Valentine’s.
-But for every year ahead.
-
-Will you be my Valentine… and my always?
-`;
-
-let index = 0;
-
-function typeWriter() {
-    if (index < message.length) {
-        typingText.innerHTML += message.charAt(index);
-        index++;
-        setTimeout(typeWriter, 15);
-    }
-}
-
-function moveButton() {
-    noButton.style.position = "absolute";
-    noButton.style.left = Math.random() * (window.innerWidth - 100) + "px";
-    noButton.style.top = Math.random() * (window.innerHeight - 50) + "px";
-}
-
-noButton.addEventListener("mouseover", moveButton);
-
-yesButton.addEventListener("click", () => {
+// Start everything
+startBtn.addEventListener("click", () => {
+    music.volume = 0.5;
+    music.play().catch(() => {});
+    letter.classList.remove("hidden");
     game.classList.remove("hidden");
     startGame();
 });
 
-closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-});
+// Floating hearts background
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💗";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animation = "floatUp 5s linear forwards";
+    document.body.appendChild(heart);
 
-function startGame() {
-    score = 0;
-    misses = 0;
-    scoreDisplay.textContent = score;
-    spawnHeart();
+    setTimeout(() => heart.remove(), 5000);
 }
 
-function spawnHeart() {
+setInterval(createFloatingHeart, 600);
+
+// Mini Game
+function startGame() {
+    setInterval(createGameHeart, 800);
+}
+
+function createGameHeart() {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
     heart.innerHTML = "💖";
+    heart.style.position = "absolute";
     heart.style.left = Math.random() * 90 + "%";
+    heart.style.top = "0px";
+    heart.style.fontSize = "25px";
+    heart.style.cursor = "pointer";
 
     heart.addEventListener("click", () => {
-        heart.remove();
         score++;
         scoreDisplay.textContent = score;
-        taunt.textContent = "";
-
-        if (score >= 5) {
-            game.classList.add("hidden");
-            showPopup();
-        } else {
-            spawnHeart();
-        }
+        heart.remove();
     });
 
     gameArea.appendChild(heart);
 
-    setTimeout(() => {
-        if (heart.parentNode) {
-            heart.remove();
-            misses++;
-            taunt.textContent = taunts[Math.floor(Math.random() * taunts.length)];
-            if (misses > 5) {
-                taunt.textContent = "Okay fine I’ll slow down for you (just like in the be.... ooops) 😂";
-            }
-            spawnHeart();
-        }
-    }, 2000);
-}
+    let fall = setInterval(() => {
+        heart.style.top = heart.offsetTop + 5 + "px";
 
-function showPopup() {
-    popup.style.display = "block";
-    typeWriter();
+        if (heart.offsetTop > 350) {
+            heart.remove();
+            clearInterval(fall);
+        }
+    }, 20);
 }
