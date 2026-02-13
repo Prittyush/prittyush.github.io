@@ -1,65 +1,71 @@
 const startBtn = document.getElementById("startBtn");
 const letter = document.getElementById("letter");
-const game = document.getElementById("game");
-const gameArea = document.getElementById("gameArea");
-const scoreDisplay = document.getElementById("score");
+const gallery = document.getElementById("gallery");
+const codGame = document.getElementById("codGame");
+const proposal = document.getElementById("proposal");
+const tauntContainer = document.getElementById("tauntContainer");
 const music = document.getElementById("bg-music");
 
-let score = 0;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-// Start everything
 startBtn.addEventListener("click", () => {
     music.volume = 0.5;
-    music.play().catch(() => {});
+    music.play().catch(()=>{});
     letter.classList.remove("hidden");
-    game.classList.remove("hidden");
-    startGame();
+    gallery.classList.remove("hidden");
+    codGame.classList.remove("hidden");
+    startTauntGame();
 });
 
-// Floating hearts background
-function createFloatingHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "💗";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "-20px";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    heart.style.animation = "floatUp 5s linear forwards";
-    document.body.appendChild(heart);
+/* COD TAUNT GAME */
+const taunts = [
+    { question: "You are camping like ____ 😏", answer: "noob" },
+    { question: "You got one tapped by ____ 😂", answer: "me" },
+    { question: "Clutch king is ____ 👑", answer: "me" }
+];
 
-    setTimeout(() => heart.remove(), 5000);
+let current = 0;
+
+function startTauntGame() {
+    showTaunt();
 }
 
-setInterval(createFloatingHeart, 600);
+function showTaunt() {
+    if (current >= taunts.length) {
+        codGame.classList.add("hidden");
+        proposal.classList.remove("hidden");
+        return;
+    }
 
-// Mini Game
-function startGame() {
-    setInterval(createGameHeart, 800);
+    tauntContainer.innerHTML = `
+        <p>${taunts[current].question}</p>
+        <input id="tauntInput" type="text" placeholder="Type here...">
+        <button onclick="checkAnswer()">Submit</button>
+    `;
 }
 
-function createGameHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.style.position = "absolute";
-    heart.style.left = Math.random() * 90 + "%";
-    heart.style.top = "0px";
-    heart.style.fontSize = "25px";
-    heart.style.cursor = "pointer";
+window.checkAnswer = function() {
+    const input = document.getElementById("tauntInput").value.toLowerCase();
+    if (input === taunts[current].answer) {
+        current++;
+        showTaunt();
+    } else {
+        alert("Wrong answer 😏 Try again!");
+    }
+};
 
-    heart.addEventListener("click", () => {
-        score++;
-        scoreDisplay.textContent = score;
-        heart.remove();
-    });
+/* YES NO GAME */
 
-    gameArea.appendChild(heart);
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.top = Math.random() * 400 + "px";
+    noBtn.style.left = Math.random() * 400 + "px";
+});
 
-    let fall = setInterval(() => {
-        heart.style.top = heart.offsetTop + 5 + "px";
-
-        if (heart.offsetTop > 350) {
-            heart.remove();
-            clearInterval(fall);
-        }
-    }, 20);
-}
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <h1 style="margin-top:200px;">SHE SAID YESSSSSS ❤️🔥</h1>
+        <h2>You are officially my Valentine 💖</h2>
+    `;
+});
