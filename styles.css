@@ -173,3 +173,69 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
 }
+/* EMAIL STYLE LETTER */
+
+.email-container {
+    background: white;
+    color: #ff4d6d;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.email-header {
+    background: #ffe5ec;
+    padding: 15px 25px;
+    font-size: 14px;
+    border-bottom: 1px solid #ffd6e0;
+}
+
+.email-header p {
+    margin: 5px 0;
+}
+
+.email-body {
+    padding: 25px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.email-sign {
+    margin-top: 30px;
+    font-weight: bold;
+}
+/* EMAIL STYLE LETTER */
+
+.email-container {
+    background: white;
+    color: #ff4d6d;
+    max-width: 700px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.email-header {
+    background: #ffe5ec;
+    padding: 15px 25px;
+    font-size: 14px;
+    border-bottom: 1px solid #ffd6e0;
+}
+
+.email-header p {
+    margin: 5px 0;
+}
+
+.email-body {
+    padding: 25px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.email-sign {
+    margin-top: 30px;
+    font-weight: bold;
+}
