@@ -7,25 +7,33 @@ const typingText = document.getElementById("typing-text");
 const game = document.getElementById("game");
 const gameArea = document.getElementById("game-area");
 const scoreDisplay = document.getElementById("score");
+const taunt = document.getElementById("taunt");
 
 let score = 0;
+let misses = 0;
+
+const taunts = [
+    "Aree bhai focus crow thoda😭",
+    "Clash Royale player bolte apne apko",
+    "That heart dodged you 😏",
+    "Even I wasn’t this hard to catch 😌",
+    "Skill issue detected 💀"
+];
 
 const message = `
-Jigglipuff,
+Hey Love
 
-From Jan 14, 2024 till today,
-these 2 years with you have been my favorite chapter.
+From Jan 14, 2024, till today,
+these 2 years have been the part of my life where I have felt the most loved and cared for because of you! 
 
-Distance only makes us stronger.
-
-I admire your dreams.
-I support your journey.
-I celebrate you.
-
+I love you.
+I am proud of you. 
+I just want to hold you. 
 I choose you.
-Today.
-This Valentine’s.
-And for every chapter ahead.
+
+Not just today.
+Not just this Valentine’s.
+But for every year ahead.
 
 Will you be my Valentine… and my always?
 `;
@@ -36,7 +44,7 @@ function typeWriter() {
     if (index < message.length) {
         typingText.innerHTML += message.charAt(index);
         index++;
-        setTimeout(typeWriter, 20); // FASTER typing
+        setTimeout(typeWriter, 15);
     }
 }
 
@@ -47,7 +55,6 @@ function moveButton() {
 }
 
 noButton.addEventListener("mouseover", moveButton);
-noButton.addEventListener("touchstart", moveButton);
 
 yesButton.addEventListener("click", () => {
     game.classList.remove("hidden");
@@ -60,6 +67,7 @@ closeBtn.addEventListener("click", () => {
 
 function startGame() {
     score = 0;
+    misses = 0;
     scoreDisplay.textContent = score;
     spawnHeart();
 }
@@ -68,13 +76,13 @@ function spawnHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "💖";
-
     heart.style.left = Math.random() * 90 + "%";
 
     heart.addEventListener("click", () => {
         heart.remove();
         score++;
         scoreDisplay.textContent = score;
+        taunt.textContent = "";
 
         if (score >= 5) {
             game.classList.add("hidden");
@@ -87,30 +95,19 @@ function spawnHeart() {
     gameArea.appendChild(heart);
 
     setTimeout(() => {
-        if (heart.parentNode) heart.remove();
-        if (score < 5) spawnHeart();
-    }, 3000);
+        if (heart.parentNode) {
+            heart.remove();
+            misses++;
+            taunt.textContent = taunts[Math.floor(Math.random() * taunts.length)];
+            if (misses > 5) {
+                taunt.textContent = "Okay fine I’ll slow down for you (just like in the be.... ooops) 😂";
+            }
+            spawnHeart();
+        }
+    }, 2000);
 }
 
 function showPopup() {
     popup.style.display = "block";
-    popup.style.animation = "zoomIn 0.3s ease";
     typeWriter();
-    launchConfetti();
-}
-
-/* CONFETTI */
-function launchConfetti() {
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement("div");
-        confetti.innerHTML = "💘";
-        confetti.style.position = "fixed";
-        confetti.style.left = Math.random() * 100 + "%";
-        confetti.style.top = "-10px";
-        confetti.style.fontSize = "20px";
-        confetti.style.animation = "fall 2s linear forwards";
-        document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 2000);
-    }
 }
