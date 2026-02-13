@@ -266,7 +266,7 @@ button:hover {
     font-size: 28px;
     border-radius: 15px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .kiss-box:hover {
@@ -276,5 +276,7 @@ button:hover {
 .kiss-message {
     margin-top: 20px;
     font-weight: bold;
+    color: white;
 }
+
 
