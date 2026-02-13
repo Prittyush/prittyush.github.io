@@ -116,3 +116,27 @@ function showPopup() {
     popup.style.display = "block";
     typeWriter();
 }
+/* MINI KISS GAME */
+
+const grid = document.getElementById("kiss-grid");
+const kissMessage = document.getElementById("kiss-message");
+
+const totalBoxes = 9;
+const winningIndex = Math.floor(Math.random() * totalBoxes);
+
+for (let i = 0; i < totalBoxes; i++) {
+    const box = document.createElement("div");
+    box.classList.add("kiss-box");
+    box.innerHTML = "❓";
+
+    box.addEventListener("click", () => {
+        if (i === winningIndex) {
+            box.innerHTML = "💋";
+            kissMessage.textContent = "You found it! Okay fine… you get unlimited kisses 😌❤️";
+        } else {
+            box.innerHTML = "🙈";
+        }
+    });
+
+    grid.appendChild(box);
+}
