@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Just for you my love</title>
+    <title>For My Jigglipuff ❤️</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -10,45 +10,63 @@
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="hearts"></div>
+<div class="floating-hearts"></div>
 
-<div class="container">
+<!-- HERO SECTION -->
+<section class="hero">
     <h1>Hey Shrutika ❤️</h1>
-    <p class="subtitle">You have shown me so much love & care that I didn't even know was possible ever in my life. The past 2 years have been a journey, and I want to keep continuing it for as long as the end of time (Yess your ass is stuck with me :) )</p>
+    <p class="tagline">You are my favorite chapter — and I’m not done writing it.</p>
+</section>
 
-    <h2>So, one more year, will you be my Valentine, Shrutika Sanjay Mahajan, and promise me to keep being my Valentine and allow me to ask you every year🌹</h2>
+<!-- LETTER SECTION -->
+<section class="letter">
+    <p>
+        You showed me a kind of love & care I didn’t even know was possible ever in my life. These past 2 years have made me fall in love with you more and more. 
+        I don't know what Kala Jaddu you're doing, but its working! All I wanna do is just hold you all day and not let go ever.  
+        And I want to keep writing this story with you, for every chapter ahead. 
+    </p>
+</section>
+
+<!-- QUESTION SECTION -->
+<section class="question">
+    <h2>
+        Will you be my Valentine again?
+        Shrutika Sanjay Mahajan? 🌹
+    </h2>
 
     <div class="buttons">
         <button id="no-btn">No 🙈</button>
-        <button id="yes-btn">Yes, (I am also obsessed with you Prittysh OMGG!!)❤️</button>
+        <button id="yes-btn">Yes, obviously I’m obsessed with you Prittyush (OFC, you didnt even had to ask) ❤️</button>
+    </div>
+</section>
+
+<!-- GAME OVERLAY -->
+<div id="game" class="game hidden">
+    <div class="game-box">
+        <h2>Show me your Clash Royal Skills and Catch 5 Hearts to Unlock 💕</h2>
+        <p>Score: <span id="score">0</span>/5</p>
+        <p id="taunt" class="taunt"></p>
+        <div id="game-area"></div>
     </div>
 </div>
-    
-<div id="game" class="game hidden">
-    <h2>Now show me your Clash Royale skills and catch 5 Hearts to Unlock My Proposal 💕</h2>
-    <p>Hearts Caught: <span id="score">0</span>/5</p>
-    <div id="game-area"></div>
-</div>
 
+<!-- POPUP -->
 <div class="popup" id="popup">
-
-    <h2>Shukriya Malik, Bhagwana Bhala karega, iss gareeb ki Valentine banne ki icha puri kari apne!! </h2>
+    <h2>Shukriya Malik ❤️</h2>
 
     <p id="typing-text"></p>
 
     <div class="gallery">
-        <!-- ADD YOUR PHOTOS HERE -->
         <img src="photo1.jpg">
         <img src="photo2.jpg">
         <img src="photo3.jpg">
     </div>
 
     <p class="final-line">
-        I love you endlessly. And I’m in this for the long run, I promise. ♾️❤️
+        I love you endlessly. I’m in this for the long run. ♾️❤️
     </p>
 
     <button id="close-btn">Close 💕</button>
-
 </div>
 
 <script src="script.js"></script>
