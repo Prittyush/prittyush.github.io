@@ -1,3 +1,9 @@
+const music = document.getElementById("bg-music");
+
+document.addEventListener("click", function() {
+    music.play().catch(() => {});
+}, { once: true });
+
 const noButton = document.getElementById("no-btn");
 const yesButton = document.getElementById("yes-btn");
 const popup = document.getElementById("popup");
