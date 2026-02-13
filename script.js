@@ -22,27 +22,23 @@ let misses = 0;
 const taunts = [
     "Aree bhai focus crow thoda😭",
     "Clash Royale player bolte apne apko",
-    "That heart dodged you 😏",
     "Even I wasn’t this hard to catch 😌",
-    "Skill issue detected 💀"
 ];
 
 const message = `
-Hey Love ❤️
+I know I have been busy and have not been able to give you enough time, and I don't like that at all. I want to say that
 
-From Jan 14, 2024, till today,
-these 2 years have been the part of my life where I have felt the most loved and cared for because of you!
-
-I love you.
-I am proud of you.
-I just want to hold you.
-I choose you.
+I love you a lot. \n
+I am proud of you. \n
+I will always be there for you \n
+I want no one else, just you! \n
+I choose you and only you.
 
 Not just today.
 Not just this Valentine’s.
 But for every year ahead.
 
-Will you be my Valentine… and my always?
+So be my Valentine… and my always okay?
 `;
 
 let index = 0;
