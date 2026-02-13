@@ -1,115 +1,175 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(-45deg, #ff6b81, #ff8fab, #ff4d6d, #ff758f);
-    background-size: 400% 400%;
-    animation: gradientFlow 18s ease infinite; /* Slower */
+    background: linear-gradient(135deg, #ff6b81, #ff8fab);
     color: white;
-    text-align: center;
     overflow-x: hidden;
 }
 
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* FLOATING HEARTS */
+.floating-hearts::before {
+    content: "💖 💕 💘 💗 💓 💞";
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    opacity: 0.15;
+    animation: float 20s linear infinite;
 }
 
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-100vh); }
+}
+
+/* HERO */
 .hero {
-    padding: 100px 20px;
+    text-align: center;
+    padding: 80px 20px 40px;
 }
 
-.highlight {
-    animation: glowPulse 3s infinite alternate;
+.hero h1 {
+    font-size: 52px;
+    margin: 0;
 }
 
-@keyframes glowPulse {
-    from { text-shadow: 0 0 5px white; }
-    to { text-shadow: 0 0 25px white; }
+.tagline {
+    opacity: 0.95;
+    margin-top: 10px;
+    font-size: 18px;
 }
 
-button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+/* LETTER */
+.letter {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.letter-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.letter-box h2 {
+    margin-top: 0;
+}
+
+/* QUESTION */
+.question {
+    text-align: center;
+    padding: 40px 20px 80px;
+}
+
+.buttons button {
     font-size: 16px;
-    margin: 10px;
+    padding: 14px 30px;
+    margin: 12px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
     transition: 0.3s;
+}
+
+#yes-btn {
+    background: white;
+    color: #ff4d6d;
+}
+
+#no-btn {
+    background: #ff4d6d;
+    color: white;
 }
 
 button:hover {
     transform: scale(1.1);
 }
 
+/* GAME */
+
+.game {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hidden {
     display: none;
 }
 
-/* Gallery */
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px;
-}
-
-.gallery img {
-    width: 200px;
+.game-box {
+    background: white;
+    color: #ff4d6d;
+    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 400px;
 }
 
-/* Sparkles */
-.sparkles::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: sparkleMove 25s linear infinite;
-    opacity: 0.12;
-}
-
-@keyframes sparkleMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(-300px); }
-}
-
-/* Floating hearts */
-@keyframes floatUp {
-    from { transform: translateY(0); opacity: 0.8; }
-    to { transform: translateY(-110vh); opacity: 0; }
-}
-
-/* Game */
-.game-area {
+#game-area {
+    height: 250px;
+    border: 2px dashed #ff4d6d;
+    margin-top: 20px;
     position: relative;
-    width: 90%;
-    height: 400px;
-    margin: 20px auto;
-    background: rgba(255,255,255,0.1);
-    border-radius: 20px;
     overflow: hidden;
 }
 
-/* Proposal */
-.proposal {
-    padding: 60px 20px;
+.heart {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    animation: fall 2.5s linear forwards;
 }
 
-#yesBtn {
-    background: #ff4d6d;
-    color: white;
+@keyframes fall {
+    from { top: -10%; }
+    to { top: 100%; }
 }
 
-#noBtn {
+.taunt {
+    height: 25px;
+    font-weight: bold;
+    color: #ff6b81;
+}
+
+/* POPUP */
+
+.popup {
+    display: none;
+    position: fixed;
     background: white;
     color: #ff4d6d;
+    padding: 30px;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
 }
 
-@keyframes floatUp {
-    from { transform: translateY(0); opacity: 0.8; }
-    to { transform: translateY(-110vh); opacity: 0; }
+.gallery img {
+    width: 30%;
+    margin: 5px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.final-line {
+    margin-top: 20px;
+    font-weight: bold;
 }
