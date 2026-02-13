@@ -52,9 +52,12 @@ function typeWriter() {
 }
 
 function moveButton() {
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 60;
+
     noButton.style.position = "absolute";
-    noButton.style.left = Math.random() * (window.innerWidth - 100) + "px";
-    noButton.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    noButton.style.left = Math.max(0, Math.random() * maxX) + "px";
+    noButton.style.top = Math.max(0, Math.random() * maxY) + "px";
 }
 
 noButton.addEventListener("mouseover", moveButton);
